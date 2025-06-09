@@ -6,6 +6,7 @@ LABEL description="Playground container with 2 microVMs using Firecracker"
 # Install dependencies
 RUN apt-get update && apt-get install -y \
     curl \
+    tar \
     iproute2 \
     iputils-ping \
     socat \
