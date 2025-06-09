@@ -23,10 +23,13 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /opt/firecracker
 
 # Download Firecracker binary and jailer
-RUN curl -LOJ https://github.com/firecracker-microvm/firecracker/releases/download/v1.5.0/firecracker-v1.5.0-x86_64.tgz \
-    && tar xvf firecracker-v1.5.0-x86_64.tgz \
-    && mv release-v1.5.0-x86_64/firecracker /usr/local/bin/firecracker \
-    && chmod +x /usr/local/bin/firecracker
+RUN curl -LO https://github.com/firecracker-microvm/firecracker/releases/download/v1.5.0/firecracker-v1.5.0-x86_64.tgz && \
+    tar -xvf firecracker-v1.5.0-x86_64.tgz && \
+    mv firecracker-v1.5.0-x86_64/firecracker /usr/local/bin/firecracker && \
+    chmod +x /usr/local/bin/firecracker
+
+# Verify
+RUN firecracker --version
 
 # Copy kernel and rootfs files into container (you will mount them in prod)
 COPY ./vmlinux1 ./vmlinux2 ./rootfs1.ext4 ./rootfs2.ext4 ./
