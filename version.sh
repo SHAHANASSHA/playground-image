@@ -24,8 +24,8 @@ NEW_VERSION="${MAJOR}.${MINOR}"
 echo "New version: $NEW_VERSION"
 echo "$NEW_VERSION > $VERSION_FILE"
 
-git config user.name "jenkins"
-git config user.email "jenkins@j=example.com"
+git config user.name "SHAHANASSHA"
+git config user.email "shashahanas5@gmail.com"
 git add "$VERSION_FILE"
 git commit -m "Version bump to $NEW_VERSION"
 git push origin main
