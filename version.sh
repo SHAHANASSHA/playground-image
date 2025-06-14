@@ -26,6 +26,7 @@ echo "$NEW_VERSION > $VERSION_FILE"
 
 git config user.name "SHAHANASSHA"
 git config user.email "shashahanas5@gmail.com"
+git remote add origin https://github.com/SHAHANASSHA/playground-image.git
 git add "$VERSION_FILE"
 git commit -m "Version bump to $NEW_VERSION"
 git push origin main
