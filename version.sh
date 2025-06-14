@@ -27,4 +27,9 @@ echo "$NEW_VERSION > $VERSION_FILE"
 git config user.name "SHAHANASSHA"
 git config user.email "shashahanas5@gmail.com"
 git add "$VERSION_FILE"
-git commit -m "Version bump to $NEW_VERSION"
+if 
+git diff --cashed --quiet; then
+        echo "Nothing to commit"
+else
+        git commit -m "Version bump to $NEW_VERSION"
+fi
