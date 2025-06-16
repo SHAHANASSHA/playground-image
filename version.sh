@@ -1,11 +1,18 @@
 #!/bin/bash
 
-LATEST_TAG=$(git describe --tags --abbrev=0 >/dev/null || echo "v0.0") 
-LATEST_TAG=${LATEST_TAG#v}
-MAJOR=$(echo "$LATEST_TAG" | cut -d. -f1)       
-MINOR=$(echo "$LATEST_TAG" | cut -d. -f2)       
+VERSION_FILE='VERSION' 
+
+if [ ! -f  "$VERSION_FILE" ]; then
+        echo "0.0" > "$VERSION_FILE"       
+fi
+
+
+VERSION=$(cat "$VERSION_FILE")                
+MAJOR=$(echo "$VERSION" | cut -d. -f1)       
+MINOR=$(echo "$VERSION" | cut -d. -f2)       
 
 COMMIT_MSG=$(git log -1 --pretty=%B)         
+
 if  echo "$COMMIT_MSG" | grep -q "#major"; then 
         MAJOR=$((MAJOR + 1))                        
         MINOR=0
@@ -13,9 +20,17 @@ else
         MINOR=$((MINOR + 1))
 fi
 
-NEW_VERSION="${MAJOR}.${MINOR}"            
-echo "$NEW_VERSION"                   
+NEW_VERSION="${MAJOR}.${MINOR}"                
+echo "New version: $NEW_VERSION"              
+echo "$NEW_VERSION" > "$VERSION_FILE"         
 
 git config user.name "SHAHANASSHA"
 git config user.email "shashahanas5@gmail.com"
+git add "$VERSION_FILE"
+if 
+git diff --cached --quiet; then
+        echo "Nothing to commit"
+else
+        git commit -m "Version bump to $NEW_VERSION [skip ci]"
 
+fi
