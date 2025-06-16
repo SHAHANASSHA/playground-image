@@ -14,7 +14,7 @@ else
 fi
 
 NEW_VERSION="${MAJOR}.${MINOR}"            
-echo "New version:$NEW_VERSION"                   
+echo "$NEW_VERSION"                   
 
 git config user.name "SHAHANASSHA"
 git config user.email "shashahanas5@gmail.com"
