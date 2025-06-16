@@ -2,7 +2,7 @@
 
 VERSION_FILE='version.txt'
 
-if [ ! -f  $VERSION_FILE  ]; then
+if [ ! -f  "$VERSION_FILE" ]; then
         echo "0.0" > "$VERSION_FILE"
 fi
 
@@ -14,10 +14,10 @@ MINOR=$(echo "$VERSION_FILE" | cut -d. -f2)
 COMMIT_MSG=$(git log -1 --pretty=%B)
 
 if  echo "$COMMIT_MSG" | grep -q "#major"; then
-        MAJOR=$(( MAJOR + 1 ))
+        MAJOR=$((MAJOR + 1))
         MINOR=0
 else
-        MINOR=$(( MINOR + 1 ))
+        MINOR=$((MINOR + 1))
 fi
 
 NEW_VERSION="${MAJOR}.${MINOR}"
