@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LATEST_TAG=$(git discribe --tags --abbrev=0 >/dev/null || echo "0.0") 
+LATEST_TAG=$(git describe --tags --abbrev=0 >/dev/null || echo "0.0") 
 LATEST_TAG=${LATEST_TAG#v}
 MAJOR=$(echo "$VERSION" | cut -d. -f1)       
 MINOR=$(echo "$VERSION" | cut -d. -f2)       
