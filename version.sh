@@ -7,9 +7,9 @@ if [ ! -f  $VERSION_FILE  ]; then
 fi
 
 
-VERSION=$(read -r $VERSION < "$VERSION_FILE")
-MAJOR=$(cat $VERSION_FILE | cut -d. -f1)
-MINOR=$(cat $VERSION_FILE | cut -d. -f2)
+VERSION=$(cat "$VERSION_FILE")
+MAJOR=$(echo "$VERSION_FILE" | cut -d. -f1)
+MINOR=$(echo "$VERSION_FILE" | cut -d. -f2)
 
 COMMIT_MSG=$(git log -1 --pretty=%B)
 
