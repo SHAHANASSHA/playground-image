@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LATEST_TAG=$(gitdiscribe --tags --abbrev=0 >/dev/null || echo "0.0") 
+LATEST_TAG=$(git discribe --tags --abbrev=0 >/dev/null || echo "0.0") 
 LATEST_TAG=${LATEST_TAG#v}
 MAJOR=$(echo "$VERSION" | cut -d. -f1)       
 MINOR=$(echo "$VERSION" | cut -d. -f2)       
@@ -14,7 +14,7 @@ else
 fi
 
 NEW_VERSION="${MAJOR}.${MINOR}"            
-echo "New version: $NEW_VERSION"                   
+echo "New version:$NEW_VERSION"                   
 
 git config user.name "SHAHANASSHA"
 git config user.email "shashahanas5@gmail.com"
