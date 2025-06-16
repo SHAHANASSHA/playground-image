@@ -4,9 +4,9 @@ set -e
 
 git fetch --tags
 
-LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0")
+LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "0.0")
 
-VERSION=${LATEST_TAG#v}
+VERSION=${LATEST_TAG}
 MAJOR=$(echo $VERSION | cut -d. -f1)
 MINOR=$(echo $VERSION | cut -d. -f2)
 
