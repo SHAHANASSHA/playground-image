@@ -31,5 +31,6 @@ if
 git diff --cached --quiet; then
         echo "Nothing to commit"
 else
-        git commit -m "Version bump to $NEW_VERSION"
+        git commit -m "Version bump to $NEW_VERSION" [skip ci]"
+
 fi
