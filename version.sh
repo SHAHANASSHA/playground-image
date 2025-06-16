@@ -7,13 +7,13 @@ if [ ! -f  $VERSION_FILE  ]; then
 fi
 
 
-VERSION=$(read -r VERSION < "$VERSION_FILE")
+VERSION=$(read -r $VERSION < "$VERSION_FILE")
 MAJOR=$(cat $VERSION_FILE | cut -d. -f1)
 MINOR=$(cat $VERSION_FILE | cut -d. -f2)
 
 COMMIT_MSG=$(git log -1 --pretty=%B)
 
-if  echo "$VERSION_FILE" | grep -q "#major"; then
+if  echo "$COMMIT_MSG" | grep -q "#major"; then
         MAJOR=$(( MAJOR + 1 ))
         MINOR=0
 else
