@@ -1,36 +1,35 @@
 #!/bin/bash
 
-VERSION_FILE='VERSION' 
+VERSION_FILE='VERSION'
 
-if [ ! -f  "$VERSION_FILE" ]; then
-        echo "0.0" > "$VERSION_FILE"       
+if [ ! -f "$VERSION_FILE" ]; then
+    echo "0.0" > "$VERSION_FILE"
 fi
 
+VERSION=$(cat "$VERSION_FILE")
+MAJOR=$(echo "$VERSION" | cut -d. -f1)
+MINOR=$(echo "$VERSION" | cut -d. -f2)
 
-VERSION=$(cat "$VERSION_FILE")                
-MAJOR=$(echo "$VERSION" | cut -d. -f1)       
-MINOR=$(echo "$VERSION" | cut -d. -f2)       
+COMMIT_MSG=$(git log -1 --pretty=%B)
 
-COMMIT_MSG=$(git log -1 --pretty=%B)         
-
-if  echo "$COMMIT_MSG" | grep -q "#major"; then 
-        MAJOR=$((MAJOR + 1))                        
-        MINOR=0
+if echo "$COMMIT_MSG" | grep -q "#major"; then
+    MAJOR=$((MAJOR + 1))
+    MINOR=0
 else
-        MINOR=$((MINOR + 1))
+    MINOR=$((MINOR + 1))
 fi
 
-NEW_VERSION="${MAJOR}.${MINOR}"                
-echo "New version: $NEW_VERSION"              
-echo "$NEW_VERSION" > "$VERSION_FILE"         
+NEW_VERSION="${MAJOR}.${MINOR}"
+echo "New version: $NEW_VERSION"
+echo "$NEW_VERSION" > "$VERSION_FILE"
 
 git config user.name "SHAHANASSHA"
 git config user.email "shashahanas5@gmail.com"
-git add "$VERSION_FILE"
-if 
-git diff --cached --quiet; then
-        echo "Nothing to commit"
-else
-        git commit -m "Version bump to $NEW_VERSION"""""[skip ci]"
 
+git add "$VERSION_FILE"
+if git diff --cached --quiet; then
+    echo "Nothing to commit"
+else
+    git commit -m "Version bump to $NEW_VERSION [skip ci]"
+    git push origin HEAD  # or HEAD:version-tracking if using a separate branch
 fi
