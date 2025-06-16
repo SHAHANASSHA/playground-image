@@ -31,5 +31,8 @@ if git diff --cached --quiet; then
     echo "Nothing to commit"
 else
     git commit -m "Version bump to $NEW_VERSION [skip ci]"
-    git push origin HEAD  # or HEAD:version-tracking if using a separate branch
+    git push origin HEAD 
 fi
+
+git config user.name "SHAHANASSHA"
+git config user.email "shashahanas5@gmail.com"
