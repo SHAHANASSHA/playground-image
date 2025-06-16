@@ -30,7 +30,7 @@ echo "$NEW_TAG"
 
 git config user.name "SHAHANASSHA"
 git config user.email "shashahanas5@gmail.com"
-git add "$VERSION_FILE"
+
 if 
 git diff --cached --quiet; then
         echo "Nothing to commit"
