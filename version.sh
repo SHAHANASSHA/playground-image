@@ -14,7 +14,7 @@ echo "$COMMITS"
 
 BUMP="patch"
 
-if echo "$COMMITS" | grep -q "BREAKING CHANGE"; then
+if echo "$COMMITS" | grep -q "fold"; then
   BUMP="major"
 elif echo "$COMMITS" | grep -q "^feat:"; then
   BUMP="minor"
@@ -47,6 +47,8 @@ git config user.email "shashahanas5@gmail.com"
 
 git tag -a "$NEW_TAG" -m "Release $NEW_TAG"
 git push origin "$NEW_TAG"
+
+
 
 
 
