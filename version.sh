@@ -14,11 +14,11 @@ echo "$COMMITS"
 
 BUMP="patch"
 
-if echo "$COMMITS" | grep -q "fold"; then
+if echo "$COMMITS" | grep -q "major"; then
   BUMP="major"
-elif echo "$COMMITS" | grep -q "^feat:"; then
+elif echo "$COMMITS" | grep -q "^minor:"; then
   BUMP="minor"
-elif echo "$COMMITS" | grep -q "^fix:"; then
+elif echo "$COMMITS" | grep -q "^patch:"; then
   BUMP="patch"
 else
   echo "No version bump needed. Exiting."
