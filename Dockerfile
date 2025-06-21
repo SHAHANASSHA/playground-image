@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y \
     bridge-utils \
     iproute2 \
     procps \
-    ca-certificates \
+    ca-certificates \ 
     git \
     build-essential \
     python3 \ 
