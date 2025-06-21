@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y \
     curl \
     wget \
     tar \
-    iptables \
+    iptables \ 
     dnsmasq \
     bridge-utils \
     iproute2 \
