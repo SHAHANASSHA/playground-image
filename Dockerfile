@@ -20,7 +20,7 @@ RUN apt-get update && apt-get install -y \
     python3-pip \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
-
+ 
 # Download and extract firecracker
 RUN wget https://github.com/firecracker-microvm/firecracker/releases/download/v1.11.0/firecracker-v1.11.0-x86_64.tgz
 RUN tar -xf  firecracker-v1.11.0-x86_64.tgz
