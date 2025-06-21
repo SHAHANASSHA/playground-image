@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+ FROM ubuntu:22.04
  
 # Install required packages
 RUN apt-get update && apt-get install -y \
@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y \
     wget \
     tar \
     iptables \ 
-    dnsmasq \
+    dnsmasq \ 
     bridge-utils \
     iproute2 \
     procps \
