@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y \
     ca-certificates \
     git \
     build-essential \
-    python3 \
+    python3 \ 
     python3-pip \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
